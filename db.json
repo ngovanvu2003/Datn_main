@@ -1,0 +1,92 @@
+{
+  "combo": [
+    {
+      "id": 1,
+      "name": "Combo lau 299k",
+      "price": 299,
+      "category_id": "3"
+    },
+    {
+      "id": 2,
+      "name": "Combo nuong 359k",
+      "price": 359,
+      "category_id": "1"
+    }
+  ],
+  "combo_product": [
+    {
+      "combo_id": 2,
+      "combo_name": "Combo nuong 359k",
+      "product_id": 44,
+      "created_at": "2023-10-09T17:57:59.000000Z",
+      "image": "https://i.pinimg.com/564x/12/c2/49/12c249318c16434e89868df28822d01c.jpg",
+      "in_stock": "342",
+      "name": "keo",
+      "price": "42000",
+      "product_status": "0",
+      "stock_unit": "kg",
+      "unit": "kg"
+    },
+    {
+      "combo_id": 1,
+      "combo_name": "Combo nuong 299k",
+      "product_id": 45,
+      "created_at": "2023-10-09T17:57:59.000000Z",
+      "image": "https://i.pinimg.com/564x/c3/72/30/c372300e3a2b93ee3da1cb1ff9c19c5c.jpg",
+      "in_stock": "342",
+      "name": "cam",
+      "price": "32000",
+      "product_status": "0",
+      "stock_unit": "kg",
+      "unit": "kg"
+    },
+    {
+      "combo_id": 1,
+      "combo_name": "Combo nuong 299k",
+      "product_id": 46,
+      "created_at": "2023-10-09T17:57:59.000000Z",
+      "image": "https://i.pinimg.com/236x/78/a0/f9/78a0f9e1579ad515f2b77e9eae5b393c.jpg",
+      "in_stock": "342",
+      "name": "com",
+      "price": "23000",
+      "product_status": "0",
+      "stock_unit": "kg",
+      "unit": "kg"
+    }
+  ],
+  "coupons": [
+    {
+      "id": 1,
+      "coupon_code": "GIAMGIA25k",
+      "amount_discount": 25,
+      "coupon_quantity": 2,
+      "coupon_status": "1",
+      "created_at": "2023-10-09T17:57:59.000000Z"
+    },
+    {
+      "coupon_code": "GIAMGIA25K",
+      "amount_discount": "45",
+      "coupon_quantity": "444",
+      "description": "",
+      "coupon_status": "0",
+      "id": 2
+    },
+    {
+      "coupon_code": "GIAMGIA55K",
+      "amount_discount": "55000",
+      "coupon_quantity": "30",
+      "description": "",
+      "coupon_status": "0",
+      "id": 3
+    },
+    {
+      "key": 4,
+      "coupon_code": "GIAMGIA65K",
+      "amount_discount": "65000",
+      "coupon_quantity": "50",
+      "description": "",
+      "coupon_status": "1",
+      "id": 4
+    }
+  ]
+}
