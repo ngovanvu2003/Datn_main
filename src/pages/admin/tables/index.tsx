@@ -186,7 +186,7 @@ const AdminTables = () => {
           <span className="page-header-title">Quản lý bàn</span>
         </h2>
       </div>
-
+      
       <div className="card">
         <div className="card-top px-card pt-4">
           <div className="row justify-content-between align-items-center gy-2">
@@ -220,7 +220,7 @@ const AdminTables = () => {
         <div className="py-4">
           <div className="table-responsive">
             {isLoadingTables || loadingPageChange || isLoadingSearchTable ? (
-              <Skeleton active />
+              <Skeleton active/>
             ) : (
               <Table dataSource={data} pagination={false}>
                 <Column title="Tên bàn" dataIndex="name" />
@@ -233,7 +233,7 @@ const AdminTables = () => {
                     new Date(a.created_at).getTime() -
                     new Date(b.created_at).getTime()
                   }
-                  render={(record: any) => (
+                  render={(record) => (
                     <DateTimeFormat value={record} isBreak isTime />
                   )}
                 />
@@ -250,9 +250,10 @@ const AdminTables = () => {
                       value: "1",
                     },
                   ]}
-                  onFilter={(value: any, record: ITable) =>
-                    record.table_status === value
-                  }
+                  onFilter={(
+                    value: string | number | boolean,
+                    record: ITable
+                  ) => record.table_status === value}
                   render={(text: string, record: ITable) => {
                     const status = text == "0" ? false : true;
                     return (

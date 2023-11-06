@@ -37,7 +37,7 @@ const AdminCoupons = () => {
   const access_token = parsedUser.user ? parsedUser.user.access_token : "";
 
   const handlePageChange = (path: string) => {
-    setLoadingPageChange(true);
+    setLoadingPageChange(true)
     axios
       .get(`${path}`, {
         headers: {
@@ -46,8 +46,8 @@ const AdminCoupons = () => {
       })
       .then((response) => {
         setCouponsData(response.data);
-        setCouponsListData(response.data.data);
-        setLoadingPageChange(false);
+        setCouponsListData(response.data.data)
+        setLoadingPageChange(false)
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -113,7 +113,7 @@ const AdminCoupons = () => {
           await deleteCoupon(coupon.id)
             .unwrap()
             .then(({ meta }) => {
-              toast.success(meta.message);
+              toast.success(meta.message)
               const newData = couponsListData?.filter(
                 (item: any) => item.id != coupon.id
               );
@@ -196,14 +196,14 @@ const AdminCoupons = () => {
             <div className="py-4">
               <div className="table-responsive datatable-custom">
                 {isLoadingCouponApi || loadingPageChange ? (
-                  <Skeleton active />
+                  <Skeleton active/>
                 ) : (
                   <Table dataSource={data} pagination={false}>
                     <Column title="Mã giảm giá" dataIndex="coupon_code" />
                     <Column
                       title="Giảm"
                       dataIndex="amount_discount"
-                      render={(text: any) => <span>{text}%</span>}
+                      render={(text) => <span>{text}%</span>}
                     />
                     <Column title="Ngày hết hạn" dataIndex="expiration_date" />
                     <Column title="Số lượng" dataIndex="coupon_quantity" />
@@ -214,7 +214,7 @@ const AdminCoupons = () => {
                         new Date(a.created_at).getTime() -
                         new Date(b.created_at).getTime()
                       }
-                      render={(record: any) => (
+                      render={(record) => (
                         <DateTimeFormat value={record} isBreak isTime />
                       )}
                     />
@@ -231,9 +231,10 @@ const AdminCoupons = () => {
                           value: "1",
                         },
                       ]}
-                      onFilter={(value: any, record: ICoupon) =>
-                        record.coupon_status === value
-                      }
+                      onFilter={(
+                        value: string | number | boolean,
+                        record: ICoupon
+                      ) => record.coupon_status === value}
                       render={(text: string, record: ICoupon) => {
                         const status = text == "0" ? false : true;
                         return (

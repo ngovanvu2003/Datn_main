@@ -8,7 +8,7 @@ import { useGetBranchesQuery } from "../../../api/branches";
 import { IBranch } from "../../../interface/branch";
 import { format } from "date-fns";
 const FormReservation = () => {
-  const [currentDate] = useState(new Date());
+  const [currentDate, setCurrentDate] = useState(new Date());
   const formattedDate = format(currentDate, "yyyy-MM-dd HH:mm:ss");
   const { data: branches } = useGetBranchesQuery();
   const [AddReservation, { isLoading: isLoadingTableAdd }] =

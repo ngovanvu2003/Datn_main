@@ -185,7 +185,7 @@ const MenuCombo = () => {
                  <div className="menu-3-img mb-60">
                     <div className="row">
                         <div className="col-md-12">
-                            <img className="img-fluid" src="/ImagesCLient\2022-08-Menu-Sajang-BBQ-12-1-1024x787.png" alt="menu-image"/>
+                            <img className="img-fluid" src="/Images - Copy\2022-08-Menu-Sajang-BBQ-12-1-1024x787.png" alt="menu-image"/>
                         </div>
                     </div>
                 </div>
@@ -329,7 +329,7 @@ const MenuCombo = () => {
                  <div className="menu-3-img mb-60">
                     <div className="row">
                         <div className="col-md-12">
-                            <img className="img-fluid" src="/ImagesCLient/2022-08-Menu-Sajang-BBQ-13-1-1024x788.png" alt="menu-image"/>
+                            <img className="img-fluid" src="/Images - Copy/2022-08-Menu-Sajang-BBQ-13-1-1024x788.png" alt="menu-image"/>
                         </div>
                     </div>
                 </div>

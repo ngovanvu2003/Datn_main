@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useParams, useLocation, useNavigate } from "react-router-dom";
 import {
   useCheckChildrenQrMutation,
@@ -148,7 +147,7 @@ const MenuOrderLayout = () => {
           {table ? (
             <div
               style={{
-                backgroundImage: "url('/ImagesCLient/paper_bg.png')",
+                backgroundImage: "url('/Images - Copy/paper_bg.png')",
               }}
             >
               <BtnCall />

@@ -1,8 +1,10 @@
+import React from "react";
+
 // type Props = {};
 
 const OrderStep2 = () => {
   return (
-    <div>
+    <div >
       <div className="container font-normal" id="about-3">
         <div className="row ">
           <div
@@ -172,12 +174,8 @@ const OrderStep2 = () => {
         </div>
       </div>
       <div className="active" style={{ display: "flex" }}>
-        <a href="/Order/step1">
-          <button className="next">Back</button>
-        </a>
-        <a href="/Order/step3">
-          <button className="next">Next</button>
-        </a>
+        <a href="/Order/step1"><button className="next">Back</button></a>
+        <a href="/Order/step3"><button className="next">Next</button></a>
       </div>
     </div>
   );

@@ -1,19 +1,20 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import {
   useGetReservationIdQuery,
   useUpdateReservationMutation,
 } from "../../../api/reservation";
 import toast from "react-hot-toast";
-import { Loader2 } from "lucide-react";
+import { CheckCircle, Loader2 } from "lucide-react";
 import { useGetBranchesQuery } from "../../../api/branches";
 import { IBranch } from "../../../interface/branch";
-
+import { Switch } from "antd";
 import { useNavigate, useParams } from "react-router-dom";
 const AdminReserUpdate = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
+  const [switchState, setSwitchState] = useState(false);
   const { data: branches } = useGetBranchesQuery();
   const { data: reservation, isSuccess } = useGetReservationIdQuery(id || "");
   const [updateTable, { isLoading: isLoadingTableUpdate }] =

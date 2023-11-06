@@ -1,6 +1,10 @@
 import { FormattedNumber } from "react-intl";
 
-export const CurrencyFormat: any = ({ value }: any) => {
+interface CurrencyFormatProps {
+  value: number;
+}
+
+export const CurrencyFormat: React.FC<CurrencyFormatProps> = ({ value }) => {
   return (
     <FormattedNumber
       value={value}

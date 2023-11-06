@@ -1,3 +1,5 @@
+import React from "react";
+
 // type Props = {}
 
 const Slides = () => {
@@ -8,7 +10,7 @@ const Slides = () => {
           <ul className="slides">
             <li id="slide-1">
               <img
-                src="/ImagesCLient/Yellow Red Modern Fried Chicken Promotion Banner.png"
+                src="Images - Copy/Yellow Red Modern Fried Chicken Promotion Banner.png"
                 alt="slide-background"
               />
               <div className="caption d-flex align-items-center center-align">
@@ -17,7 +19,7 @@ const Slides = () => {
             </li>
             <li id="slide-3">
               <img
-                src="/ImagesCLient/Yellow Red Modern Fried Chicken Promotion Banner (2).png"
+                src="Images - Copy/Yellow Red Modern Fried Chicken Promotion Banner (2).png"
                 alt="slide-background"
               />
               <div className="caption d-flex align-items-center center-align">
@@ -25,7 +27,7 @@ const Slides = () => {
               </div>
             </li>
             <li id="slide-3">
-              <img src="/ImagesCLient/5777137.jpg" alt="slide-background" />
+              <img src="Images - Copy/5777137.jpg" alt="slide-background" />
               <div className="caption d-flex align-items-center center-align">
                 <div className="container"></div>
               </div>

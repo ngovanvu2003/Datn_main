@@ -1,15 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
-import { useGetOrderByIdQuery } from "../../../api/order";
+import {
+  useGetOrderByIdQuery,
+} from "../../../api/order";
 import { DateTimeFormat } from "../../../components/DateTimeFormat";
 import { Link } from "react-router-dom";
 import { CurrencyFormat } from "../../../components/CurrencyFormat";
-import { Skeleton } from "antd";
+import {  Skeleton } from "antd";
 import ModalOrder from "../../../components/admin/order/ModalOrder";
 import ModalMergeOrder from "../../../components/admin/order/ModalMergeOrder";
 
+type Props = {};
 const OrderAdminDetail = () => {
-  const { id } = useParams<{ id: string }>();
+  const { id } = useParams<{ id: string}>();
   const { data: orderData, isLoading: isLoadingOrder } = useGetOrderByIdQuery(
     id || ""
   );
@@ -17,7 +20,7 @@ const OrderAdminDetail = () => {
   const combo = orderData?.data?.combo;
   const product = orderData?.data?.product;
   useEffect(() => {}, [orderData]);
-
+  
   return (
     <div>
       <div className="row" id="printableArea">
@@ -56,13 +59,11 @@ const OrderAdminDetail = () => {
                       >
                         <i className="tio-print" /> IN HÓA ĐƠN
                       </Link>
-                      <span
-                        data-toggle="modal"
-                        data-target="#mergeOrder"
-                        className="btn btn-danger"
+                      <span data-toggle="modal"
+                         data-target="#mergeOrder"
+                         className="btn btn-danger"
                       >
-                        <i className="tio-gesture-swipe-left-right-2f" /> GỘP
-                        HÓA ĐƠN
+                        <i className="tio-gesture-swipe-left-right-2f" /> GỘP HÓA ĐƠN
                       </span>
                     </div>
                     <div className="d-flex gap-3 justify-content-sm-end my-3">
@@ -191,15 +192,12 @@ const OrderAdminDetail = () => {
                   Thay đổi trạng thái:
                 </label>
                 {data?.order_status == 0 ? (
-                  <span
-                    className="badge-soft px-2 py-1 rounded cursor-pointer"
-                    data-toggle="modal"
-                    data-target="#thanhtoan"
-                  >
+                  <span className="badge-soft px-2 py-1 rounded cursor-pointer"  data-toggle="modal"
+                  data-target="#thanhtoan">
                     Chưa Thanh Toán
                   </span>
-                ) : data?.order_status == 1 ? (
-                  <span className="badge-soft-success px-2 rounded text-capitalize">
+                )  : data?.order_status == 1 ? (
+                  <span className="badge-soft-success px-2 rounded text-capitalize" >
                     Đã Thanh Toán
                   </span>
                 ) : (
@@ -275,7 +273,7 @@ const OrderAdminDetail = () => {
                     </div>
                   </dt>
                   <dd className="col-6 border-top pt-2 fz-16 font-weight-bold text-dark text-right">
-                    <CurrencyFormat value={data?.order_amount_discount} />
+                  <CurrencyFormat value={data?.order_amount_discount} />
                   </dd>
                 </dl>
               </div>
@@ -362,13 +360,14 @@ const OrderAdminDetail = () => {
                     Cancel
                   </button>
                 </div>
+
               </div>
             </div>
           </div>
         </div>
       </div>
-      <ModalOrder />
-      <ModalMergeOrder />
+      <ModalOrder/>
+      <ModalMergeOrder/>
     </div>
   );
 };

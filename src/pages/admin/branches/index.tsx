@@ -36,7 +36,7 @@ const AdminBranches = () => {
   const parsedUser = user ? JSON.parse(user) : {};
   const access_token = parsedUser.user ? parsedUser.user.access_token : "";
   const handlePageChange = (path: string) => {
-    setLoadingPageChange(true);
+    setLoadingPageChange(true)
     axios
       .get(`${path}`, {
         headers: {
@@ -45,8 +45,8 @@ const AdminBranches = () => {
       })
       .then((response) => {
         setBranchesData(response.data);
-        setBranchesListData(response.data.data);
-        setLoadingPageChange(false);
+        setBranchesListData(response.data.data)
+        setLoadingPageChange(false)
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -111,7 +111,7 @@ const AdminBranches = () => {
           await deleteBranch(value)
             .unwrap()
             .then(({ meta }) => {
-              toast.success(meta.message);
+              toast.success(meta.message)
               const newData = branchesListData?.filter(
                 (item: any) => item.id != value.id
               );
@@ -133,7 +133,7 @@ const AdminBranches = () => {
   const onHandleSearch = (e: any) => {
     setSearch(e.target.value);
   };
-
+  
   const data: IBranch[] = branchesListData
     ?.filter((branch: IBranch) => {
       return branch.name.toLowerCase().includes(search.toLowerCase());
@@ -170,7 +170,7 @@ const AdminBranches = () => {
               </Link>
             </div>
             <div className="col-sm-8 col-md-6 col-lg-4">
-              <form>
+              <form >
                 <div className="input-group z-0">
                   <input
                     id="datatableSearch_"
@@ -192,7 +192,7 @@ const AdminBranches = () => {
         <div className="card-body px-0 pb-0">
           <div className="table-responsive datatable-custom">
             {isLoadingBranches || loadingPageChange ? (
-              <Skeleton active />
+              <Skeleton active/>
             ) : (
               <Table dataSource={data} pagination={false}>
                 <Column title="Tên chi nhánh" dataIndex="name" />
@@ -206,9 +206,7 @@ const AdminBranches = () => {
                     new Date(a.created_at).getTime() -
                     new Date(b.created_at).getTime()
                   }
-                  render={(record: any) => (
-                    <DateTimeFormat value={record} isTime />
-                  )}
+                  render={(record) => <DateTimeFormat value={record} isTime />}
                 />
                 <Column
                   title="Trạng thái"
@@ -223,9 +221,10 @@ const AdminBranches = () => {
                       value: "0",
                     },
                   ]}
-                  onFilter={(value: any, record: IBranch) =>
-                    record.branch_status === value
-                  }
+                  onFilter={(
+                    value: string | number | boolean,
+                    record: IBranch
+                  ) => record.branch_status === value}
                   render={(text: string, record: IBranch) => {
                     const status = text == "1" ? true : false;
                     return (

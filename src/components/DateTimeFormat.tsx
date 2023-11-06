@@ -1,10 +1,20 @@
 import { FormattedDate, FormattedTime } from "react-intl";
 
-export const DateTimeFormat: React.FC<any> = ({ value, isBreak }) => {
+interface DateTimeFormatProps {
+  value: Date;
+  isBreak?: boolean;
+  isTime?: boolean;
+}
+
+export const DateTimeFormat: React.FC<DateTimeFormatProps> = ({
+  value,
+  isBreak,
+}) => {
   return (
     <div>
-      <FormattedTime value={value} />,{isBreak && <br />}{" "}
-      <FormattedDate value={value} year="numeric" month="long" day="2-digit" />
+      <FormattedTime value={value} />, 
+      {isBreak && <br />}
+      {" "}<FormattedDate value={value} year="numeric" month="long" day="2-digit" />
     </div>
   );
 };

@@ -29,7 +29,7 @@ html {
   font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #283034;
   font-weight: 300;
-  background: url(/ImagesCLient/paper_bg.png);
+  background: url(/Images\ -\ Copy/paper_bg.png);
 }
 
 /*------------------------------------------------------------------*/
@@ -5469,11 +5469,11 @@ select:-webkit-autofill:focus {
 }
 
 #blog-page {
-  background-image: url(/ImagesCLient/kpub-banner-1.png);
+  background-image: url(/Images\ -\ Copy/kpub-banner-1.png);
 }
 
 #booking-page {
-  background-image: url(/ImagesCLient/kpub-banner-1.png);
+  background-image: url(/Images\ -\ Copy/kpub-banner-1.png);
 }
 
 #cart-page {
@@ -6424,17 +6424,16 @@ nav a#pull {
   background-color: #ac1717;
   color: white;
   border:  2px solid rgb(107, 107, 107);
-  
 }
 .datban{
-  background-image: url(/ImagesCLient/gourmet-meal-black-white-plate-indoors-generated-by-ai.jpg);
+  background-image: url(/Images\ -\ Copy/gourmet-meal-black-white-plate-indoors-generated-by-ai.jpg);
 }
 #about-3{
-  background-image: url(/ImagesCLient/paper_bg.png);
+  background-image: url(/Images\ -\ Copy/paper_bg.png);
 }
 #location:hover{
   background-color: #000000db;
-}ImagesCLient
+}
 #location:hover .grey-color{
  color: white;
 }
@@ -6465,7 +6464,7 @@ nav a#pull {
   height: 50px;
   border-radius: 50%;
   background-color: #ccc;
-  background-image: url('../ImagesCLient/avt.jpg'); /* Thay 'your-avatar-image.jpg' bằng URL hình ảnh của bạn */
+  background-image: url('../Images\ -\ Copy/avt.jpg'); /* Thay 'your-avatar-image.jpg' bằng URL hình ảnh của bạn */
   background-size: cover;
   background-position: center;
   cursor: pointer;

@@ -1,3 +1,5 @@
+import React from "react";
+
 // type Props = {}
 
 const ListBlog = () => {
@@ -15,7 +17,7 @@ const ListBlog = () => {
                         <img
                           className="img-fluid"
                           src="https://png.pngtree.com/thumb_back/fh260/png-vector/20200530/ourmid/pngtree-western-food-platter-png-image_2215355.jpg"
-                          alt="blog-post-image"
+                          alt="blog-post-image"						 
                         />
                       </div>
                     </div>
@@ -49,7 +51,7 @@ const ListBlog = () => {
                       <div className="hover-overlay">
                         <img
                           className="img-fluid"
-                          src="/ImagesCLient/sample-2-scaled.jpg"
+                          src="/Images - Copy/sample-2-scaled.jpg"
                           alt="blog-post-image"
                         />
                       </div>
@@ -81,7 +83,7 @@ const ListBlog = () => {
                       <div className="hover-overlay">
                         <img
                           className="img-fluid"
-                          src="/ImagesCLient/sumo-yakiniku-homepage-3.png"
+                          src="/Images - Copy/sumo-yakiniku-homepage-3.png"
                           alt="blog-post-image"
                         />
                       </div>
@@ -113,7 +115,7 @@ const ListBlog = () => {
                       <div className="hover-overlay">
                         <img
                           className="img-fluid"
-                          src="/ImagesCLient/sumo-homepage-5.png"
+                          src="/Images - Copy/sumo-homepage-5.png"
                           alt="blog-post-image"
                         />
                       </div>
@@ -147,7 +149,7 @@ const ListBlog = () => {
                     <div className="hover-overlay">
                       <img
                         className="img-fluid"
-                        src="\ImagesCLient\z4636781479135_8ebf185174a0e16cc7bed827cf9494d9.jpg"
+                        src="\Images - Copy\z4636781479135_8ebf185174a0e16cc7bed827cf9494d9.jpg"
                         alt="blog-post-image"
                       />
                     </div>
@@ -179,7 +181,7 @@ const ListBlog = () => {
                     <div className="hover-overlay">
                       <img
                         className="img-fluid"
-                        src="\ImagesCLient\poster1.jpg"
+                        src="\Images - Copy\poster1.jpg"
                         alt="blog-post-image"
                       />
                     </div>

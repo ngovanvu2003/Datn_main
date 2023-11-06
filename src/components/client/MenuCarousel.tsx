@@ -1,3 +1,5 @@
+import React from "react";
+
 const MenuCarousel = () => {
   return (
     <div
@@ -16,13 +18,16 @@ const MenuCarousel = () => {
               <div className="hover-overlay ">
                 <img
                   className="img-fluid"
-                  src="/images\promo-10-img.png"
+                  src="..\public\images\promo-10-img.png"
                   alt="menu-image"
                 />
                 <div className="menu-img-zoom ico-25 ">
-                  <a href="/images\promo-10-img.png" className="image-link">
+                  <a
+                    href="..\public\images\promo-10-img.png"
+                    className="image-link"
+                  >
                     {" "}
-                    <img src="/ImagesCLient\zoom.png" alt="" />
+                    <img src="..\public\Images - Copy\zoom.png" alt="" />
                   </a>
                 </div>
               </div>
@@ -52,13 +57,16 @@ const MenuCarousel = () => {
               <div className="hover-overlay">
                 <img
                   className="img-fluid"
-                  src="/images\about-03-img.png"
+                  src="..\public\images\about-03-img.png"
                   alt="menu-image"
                 />
                 <div className="menu-img-zoom ico-25">
-                  <a href="/images\about-03-img.png" className="image-link">
+                  <a
+                    href="..\public\images\about-03-img.png"
+                    className="image-link"
+                  >
                     {" "}
-                    <img src="/ImagesCLient\zoom.png" alt="" />
+                    <img src="..\public\Images - Copy\zoom.png" alt="" />
                   </a>
                 </div>
               </div>

@@ -2,11 +2,8 @@
 import { Button, Form, Input, Select, message } from "antd";
 import { useForm } from "antd/es/form/Form";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
-import {
-  useGetCategoryByIdQuery,
-  useUpdateCategoryMutation,
-} from "../../../api/categories";
+import {useEffect, useState } from 'react'
+import {  useGetCategoryByIdQuery, useUpdateCategoryMutation } from "../../../api/categories";
 
 // ... (import phần cần thiết)
 
@@ -15,20 +12,19 @@ const AdminCategoriesUpdate = () => {
   const navigate = useNavigate();
   const [form] = useForm();
   const { id } = useParams<{ id: string }>();
-  const [status, setStatus] = useState("0");
-  const { data: categoryData } = useGetCategoryByIdQuery<any>(id || "");
+  const [status,setStatus]=useState("0")
+  const { data: categoryData } = useGetCategoryByIdQuery(id || "");
 
   useEffect(() => {
     form.setFieldsValue({ ...categoryData?.data });
-    categoryData?.data?.category_status == "0" ? "Active" : "Inactive";
-    form.setFieldsValue({
-      category_status: categoryData?.data?.category_status,
-    });
-    setStatus(categoryData?.data?.category_status);
+    categoryData?.data?.category_status == '0'? "Active" : "Inactive"
+    form.setFieldsValue({ category_status: categoryData?.data?.category_status });
+    setStatus(categoryData?.data?.category_status)
   }, [categoryData]);
 
   const onFinish = (values: any) => {
-    updateCategory({ ...values, id: id, category_status: status })
+ 
+    updateCategory({ ...values, id: id ,category_status: status})
       .unwrap()
       .then(() => {
         form.resetFields();
@@ -43,9 +39,9 @@ const AdminCategoriesUpdate = () => {
   const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
-  const onhashchange = (value: any) => {
-    setStatus(value.value);
-  };
+  const onhashchange= (value:any)=>{    
+    setStatus(value.value)
+   }
 
   return (
     <>
@@ -74,71 +70,67 @@ const AdminCategoriesUpdate = () => {
           <div className="">
             <div className="border rounded-lg grid grid-cols-3 ">
               <div className=" rounded-lg p-4 ">
-                <span className=" text-gray-400 font-normal ">
-                  Name category
-                </span>
-                <Form.Item
-                  name="name"
-                  className="py-2"
-                  rules={[
-                    { required: true, message: "Please input your name!" },
-                    { min: 3, message: "Name must be more than 3 characters" },
-                  ]}
-                >
-                  <Input
-                    className="py-2 w-[300px]"
-                    placeholder="Name category"
-                  />
-                </Form.Item>
-              </div>
+              <span className=" text-gray-400 font-normal ">Name category</span>
+              <Form.Item
+                name="name"
+                className="py-2"
+                rules={[
+                  { required: true, message: "Please input your name!" },
+                  { min: 3, message: "Name must be more than 3 characters" }
+                ]}
+              >
+                <Input  
+                className="py-2 w-[300px]"
+                  placeholder="Name category"
+                />
+              </Form.Item></div>
               <div className=" rounded-lg p-4 ">
-                <span className=" text-gray-400 font-normal ">Price </span>
-                <Form.Item
-                  name="price"
-                  className="py-2"
-                  // rules={[
-                  //   { required: true, message: "Please input your name!" },
-                  //   { min: 3, message: "Name must be more than 3 characters" }
-                  // ]}
-                >
-                  <Input className="py-2 w-[300px]" placeholder="Price" />
-                </Form.Item>
-              </div>
-              <div className=" rounded-lg p-4">
-                <span className="pb-2  text-gray-400 font-normal">Status</span>
-                <Form.Item
-                  name="category_status"
-                  className="py-2"
-                  rules={[
+              <span className=" text-gray-400 font-normal ">Price </span>
+              <Form.Item
+                name="price"
+                className="py-2"
+                // rules={[
+                //   { required: true, message: "Please input your name!" },
+                //   { min: 3, message: "Name must be more than 3 characters" }
+                // ]}
+              >
+                <Input
+                className="py-2 w-[300px]"
+                  placeholder="Price"
+                />
+              </Form.Item></div>
+             <div className=" rounded-lg p-4">
+            <span className="pb-2  text-gray-400 font-normal">Status</span>
+              <Form.Item
+                name="category_status"
+                className="py-2"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please select the category status!"
+                  }
+                ]}
+              >
+                <Select
+                  labelInValue
+                  defaultValue={categoryData?.data.category_status == "0" ? "Hoạt động": "Không hoạt động "}
+                  style={{ width: 120 }}
+                  onChange={onhashchange}
+                
+                  options ={[
                     {
-                      required: true,
-                      message: "Please select the category status!",
+                      value: '0',
+                      label: 'Hoạt động',
+                    },
+                    {
+                      value: '1',
+                      label: 'Không hoạt động ',
                     },
                   ]}
-                >
-                  <Select
-                    labelInValue
-                    defaultValue={
-                      categoryData?.data.category_status == "0"
-                        ? "Hoạt động"
-                        : "Không hoạt động "
-                    }
-                    style={{ width: 120 }}
-                    onChange={onhashchange}
-                    options={[
-                      {
-                        value: "0",
-                        label: "Hoạt động",
-                      },
-                      {
-                        value: "1",
-                        label: "Không hoạt động ",
-                      },
-                    ]}
-                  />
-                </Form.Item>
+                />
+              </Form.Item>
               </div>
-            </div>
+              </div>
           </div>
           <div className="mt-4">
             <Form.Item>

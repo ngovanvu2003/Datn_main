@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import { useState } from "react";
 
 import { useAppDispatch } from "../../store/hook";
@@ -68,7 +68,7 @@ const MenuItem = (props: any) => {
                 className="flex justify-center space-x-1 font-medium py-3 rounded-md bg-white text-[15px] lg:text-base"
                 style={{
                   color: "rgb(204, 103, 11)",
-                  backgroundImage: "url('/ImagesCLient/paper_bg.png')",
+                  backgroundImage: "url('/Images - Copy/paper_bg.png')",
                 }}
               >
                 {categories?.map((category, index) => (

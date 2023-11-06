@@ -48,7 +48,7 @@ const BtnOrder = ({ id }: any) => {
               >
                 <p style={{ display: "flex" }}>
                   <img
-                    src="\ImagesCLient\grocery-store.png"
+                    src="\Images - Copy\grocery-store.png"
                     alt=""
                     style={{ padding: "0px 5px" }}
                   />{" "}

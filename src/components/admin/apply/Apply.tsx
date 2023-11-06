@@ -6,19 +6,21 @@ import { useState } from "react";
 import { useGetTablesQuery, useUpdateTableMutation } from "../../../api/tables";
 import { format } from "date-fns";
 
-import { useAddReservationMutation } from "../../../api/reservation";
+import {
+  useGetReservationsQuery,
+  useAddReservationMutation,
+} from "../../../api/reservation";
 import toast from "react-hot-toast";
 import { useAddOrderMutation } from "../../../api/order";
 import AddIfAny from "./AddIfAny";
 import { useGetComboQuery } from "../../../api/combo";
 import { Spin } from "antd";
 
-/* eslint-disable @typescript-eslint/no-unused-vars */
 const Apply = () => {
   const [tables, setTables] = useState([]);
   const { data: tableDatas } = useGetTablesQuery();
   const { data: branches } = useGetBranchesQuery();
-
+  const { data: reservations } = useGetReservationsQuery();
   const { data: combo } = useGetComboQuery();
   const [addReservations] = useAddReservationMutation();
   const [addOrder] = useAddOrderMutation();
@@ -29,6 +31,16 @@ const Apply = () => {
   const [idReservations, setIdReservations] = useState<any>();
   const [loading, setLoading] = useState(false);
   const [arryDataCombo, setArryDataCombo] = useState<any>([]);
+
+  const data = reservations?.data?.data?.map(
+    (reservation: { id: any; phone: any }) => {
+      return {
+        key: reservation.id,
+        label: reservation.phone,
+        ...reservation,
+      };
+    }
+  );
 
   const {
     handleSubmit,

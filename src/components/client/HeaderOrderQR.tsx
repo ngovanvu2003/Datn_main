@@ -38,7 +38,7 @@ const HeaderOrderQR = (props: Props | any) => {
       .then(({ data }) => {
         const newTab = window.open(data.data, "_blank");
         if (newTab) {
-          newTab.focus();
+          newTab.focus(); 
         } else {
           alert(
             "Trình duyệt của bạn đã chặn cửa sổ popup. Vui lòng cho phép nó để tiếp tục."
@@ -71,7 +71,7 @@ const HeaderOrderQR = (props: Props | any) => {
         <div className="row" style={{ marginBottom: "20px" }}>
           <img
             className="col-lg-6  "
-            src="/ImagesCLient\poster1.jpg"
+            src="/public\Images - Copy\poster1.jpg"
             alt=""
             style={{
               borderRadius: " 20px 0px 0px 20px",
@@ -96,14 +96,14 @@ const HeaderOrderQR = (props: Props | any) => {
                 <h1 className="font-bold  flex items-center gap-4 md:text-[48px] text-[38px]">
                   Fire BBQ{" "}
                   <img
-                    src="/ImagesCLient\logo.png"
+                    src="/public\Images - Copy\logo.png"
                     alt=""
                     style={{ width: "50px" }}
                   />
                 </h1>
-                <a href="/ImagesCLient\qr.jpg" download={"QR-code"}>
+                <a href="/public\Images - Copy\qr.jpg" download={"QR-code"}>
                   {/* <img
-                    src="../ImagesCLient\qr.jpg"
+                    src="../public\Images - Copy\qr.jpg"
                     alt=""
                     style={{ width: "100%", padding: "10px" }}
                   /> */}
@@ -114,7 +114,7 @@ const HeaderOrderQR = (props: Props | any) => {
               </div>
               <p className="flex py-3" style={{ fontWeight: "600" }}>
                 <img
-                  src="/ImagesCLient\location_on_FILL0_wght400_GRAD0_opsz24.png"
+                  src="/public\Images - Copy\location_on_FILL0_wght400_GRAD0_opsz24.png"
                   alt=""
                 />
                 {props.table?.branch_name}
@@ -126,7 +126,7 @@ const HeaderOrderQR = (props: Props | any) => {
               >
                 <div style={{ display: "flex" }}>
                   <img
-                    src="/ImagesCLient\restaurant.png"
+                    src="/Images - Copy\restaurant.png"
                     alt=""
                     style={{ width: "11%", height: "30px", margin: "0px 5px" }}
                   />
@@ -158,7 +158,7 @@ const HeaderOrderQR = (props: Props | any) => {
                     }}
                     onClick={() => onHandlePayment(orderId)}
                   >
-                    <img src="/ImagesCLient/credit-card.png" alt="" />
+                    <img src="/Images - Copy/credit-card.png" alt="" />
                   </button>
                   <button
                     style={{
@@ -167,7 +167,7 @@ const HeaderOrderQR = (props: Props | any) => {
                       margin: "0px 4px",
                     }}
                   >
-                    <img src="/ImagesCLient/bell.png" alt="" />
+                    <img src="/Images - Copy/bell.png" alt="" />
                   </button>
                 </div>
               </div>

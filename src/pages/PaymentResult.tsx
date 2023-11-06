@@ -36,7 +36,7 @@ const PaymentResult = () => {
           <div className="flex justify-center items-center ">
             <div className="my-5">
               <img
-                src="/ImagesCLient\3d-hand-making-cashless.png"
+                src="/public/Images - Copy\3d-hand-making-cashless.png"
                 alt=""
                 style={{ width: "400px" }}
               />
@@ -46,21 +46,19 @@ const PaymentResult = () => {
             </div>
           </div>
           <p className="flex justify-center items-center  text-xl">
-            Hóa đơn của bạn đã được thanh toán thành công. Rất hân hạnh được
-            phục vụ!
+            Hóa đơn của bạn đã được thanh toán thành công. Rất hân
+            hạnh được phục vụ!
           </p>
-          <div className="flex justify-center items-center ">
-            <Link to={"/admin/orders/all"} id="btn-back">
-              Quay lại
-            </Link>
-          </div>
+         <div className="flex justify-center items-center ">
+         <Link to={"/admin/orders/all"} id="btn-back">Quay lại</Link>
+         </div>
         </div>
       ) : (
         <div>
           <div className="flex justify-center items-center ">
             <div className="my-5">
               <img
-                src="/ImagesCLient\400 Error Bad Request-amico.png"
+                src="/public/Images - Copy\400 Error Bad Request-amico.png"
                 alt=""
                 style={{ width: "400px" }}
               />
@@ -70,14 +68,11 @@ const PaymentResult = () => {
             </div>
           </div>
           <p className="flex justify-center items-center  text-xl">
-            Hóa đơn của bạn chưa được thanh toán. Đã có lỗi xảy ra vu lòng thanh
-            toán lại !
+            Hóa đơn của bạn chưa được thanh toán. Đã có lỗi xảy ra vu lòng thanh toán lại !
           </p>
-          <div className="flex justify-center items-center ">
-            <Link to={"/admin/orders/all"} id="btn-back">
-              Quay lại
-            </Link>
-          </div>
+         <div className="flex justify-center items-center ">
+         <Link to={"/admin/orders/all"} id="btn-back">Quay lại</Link>
+         </div>
         </div>
       )}
     </div>

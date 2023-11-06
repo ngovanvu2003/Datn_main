@@ -1,3 +1,5 @@
+import React from "react";
+
 const FooteOrderQR = () => {
   return (
     <div style={{ marginBottom: "60px" }}>

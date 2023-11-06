@@ -437,7 +437,7 @@ const Aside = () => {
               <img
                 className="navbar-brand-logo"
                 style={{ objectFit: "contain" }}
-                src="/ImagesCLient/Logo.png"
+                src="/Images - Copy/Logo.png"
                 alt="Logo"
               />
             </Link>

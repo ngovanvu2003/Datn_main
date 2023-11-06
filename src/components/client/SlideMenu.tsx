@@ -1,4 +1,8 @@
-const SlideMenu = () => {
+import React from "react";
+
+type Props = {};
+
+const SlideMenu = (props: Props) => {
   return (
     <div>
       <section id="hero-1" className="hero-section division">
@@ -6,7 +10,7 @@ const SlideMenu = () => {
           <ul className="slides">
             <li id="slide-3">
               <img
-                src="/ImagesCLient/kpub-banner-1.png"
+                src="/public/Images\ -\ Copy/kpub-banner-1.png"
                 alt="slide-background"
               />
               <div className="caption d-flex align-items-center center-align">

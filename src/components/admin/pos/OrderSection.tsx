@@ -24,7 +24,7 @@ const OrderSection = () => {
   const parsedUser = user ? JSON.parse(user) : {};
   const branchId = parsedUser.user ? parsedUser.user.information.branch_id : "";
   const roleId = parsedUser.user ? parsedUser.user.information.role_id : "";
-  console.log("roleId", roleId, "branchId", branchId);
+  console.log("roleId",roleId ,"branchId",branchId);
   const orderTableContext = useContext(AppContext);
   const {
     handleSubmit,
@@ -32,9 +32,7 @@ const OrderSection = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { data: reservations } = useGetReservationsOptionQuery(
-    `?branch_id=${branchId}`
-  );
+  const { data: reservations } = useGetReservationsOptionQuery(`?branch_id=${branchId}`);
   const { data: tablesData } = useGetTablesOptionQuery(
     `?table_status=0&branch_id=${branchId}`
   );
@@ -46,7 +44,7 @@ const OrderSection = () => {
     useAddOrderDetailMutation();
 
   const dispatch = useAppDispatch();
-  const { items: cartsPos } = useAppSelector((state: any) => state?.cartPos);
+  const { items: cartsPos } = useAppSelector((state) => state.cartPos);
   const totalItems = cartsPos.reduce((sum: any, item: any) => {
     const countQuantity = item.quantity ? item.quantity : 1;
     return sum + item.price * countQuantity;

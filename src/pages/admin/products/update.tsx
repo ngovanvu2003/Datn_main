@@ -4,11 +4,11 @@ import { useForm } from "antd/es/form/Form";
 import { useNavigate, useParams } from "react-router-dom";
 import {
   useGetProductByIdQuery,
-  useUpdateProductMutation,
+  useUpdateProductMutation
 } from "../../../api/product";
 import { useEffect, useState } from "react";
 
-// import { useGetCategoriesQuery } from "../../../api/categories";
+import { useGetCategoriesQuery } from "../../../api/categories";
 type FieldType = {
   name?: string;
   price?: string;
@@ -26,12 +26,12 @@ const AdminProductsUpdate = () => {
   const navigate = useNavigate();
   const [form] = useForm();
   const { id } = useParams<{ id: string }>();
-  // const dataCate = useGetCategoriesQuery();
-  const { data: productData } = useGetProductByIdQuery<any>(id || "");
+  const dataCate = useGetCategoriesQuery();
+  const { data: productData } = useGetProductByIdQuery(id || "");
 
   const [status, setStatus] = useState("0");
   const [cdnImage, setCdnImage] = useState(null);
-  // const [selectedFile, setSelectedFile] = useState<any>(null);
+  const [selectedFile, setSelectedFile] = useState(null);
   const [newImageUploaded, setNewImageUploaded] = useState(false);
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
@@ -44,7 +44,7 @@ const AdminProductsUpdate = () => {
     productData?.data?.product_status == "0" ? "Active" : "Inactive";
     form.setFieldsValue({ product_status: productData?.data?.product_status });
     setStatus(productData?.data?.product_status);
-  }, [form, productData]);
+  }, [productData]);
 
   const onhashchange = (value: any) => {
     setStatus(value.value);
@@ -85,7 +85,7 @@ const AdminProductsUpdate = () => {
 
   const handleFileChange = (e: any) => {
     const file = e.target.files[0];
-    // setSelectedFile(file);
+    setSelectedFile(file);
     if (file) {
       const formData = new FormData();
       formData.append("image_upload", file);
@@ -93,9 +93,9 @@ const AdminProductsUpdate = () => {
       const requestOptions = {
         method: "POST",
         headers: {
-          Authorization: token,
+          Authorization: token
         },
-        body: formData,
+        body: formData
       };
       setUploading(true); // Bắt đầu upload
       setUploadProgress(0);
@@ -178,10 +178,7 @@ const AdminProductsUpdate = () => {
                     className="my-2"
                     rules={[
                       { required: true, message: "Please input your name!" },
-                      {
-                        min: 3,
-                        message: "Name must be more than 3 characters",
-                      },
+                      { min: 3, message: "Name must be more than 3 characters" }
                     ]}
                   >
                     <Input placeholder="Name Product" className="py-2 w-full" />
@@ -197,7 +194,7 @@ const AdminProductsUpdate = () => {
                     name="price"
                     rules={[
                       { required: true, message: "Please input your price!" },
-                      { validator: validatePrice },
+                      { validator: validatePrice }
                     ]}
                   >
                     <Input className="py-2 w-full" />
@@ -212,8 +209,8 @@ const AdminProductsUpdate = () => {
                     rules={[
                       {
                         required: true,
-                        message: "Please select the product status!",
-                      },
+                        message: "Please select the product status!"
+                      }
                     ]}
                   >
                     <Select
@@ -228,12 +225,12 @@ const AdminProductsUpdate = () => {
                       options={[
                         {
                           value: "0",
-                          label: "Hoạt động",
+                          label: "Hoạt động"
                         },
                         {
                           value: "1",
-                          label: "Không hoạt động ",
-                        },
+                          label: "Không hoạt động "
+                        }
                       ]}
                     />
                   </Form.Item>
@@ -247,10 +244,10 @@ const AdminProductsUpdate = () => {
                     <Form.Item
                       name="unit"
                       rules={[
-                        { required: true, message: "Please select the unit!" },
+                        { required: true, message: "Please select the unit!" }
                       ]}
                     >
-                      <Input className=" w-full" placeholder="Vd: Kg" />
+                       <Input className=" w-full" placeholder="Vd: Kg" />
                     </Form.Item>
                   </div>
                   {/* <div className="  ">
@@ -317,7 +314,11 @@ const AdminProductsUpdate = () => {
           <div className=" mb-4 ">
             <span>Description</span>
             <span className="text-danger"> *</span>
-            <Form.Item<FieldType> className="py-2" name="description">
+            <Form.Item<FieldType>
+              className="py-2"
+              name="description"
+           
+            >
               <Input.TextArea showCount className="h-[200px]" maxLength={100} />
             </Form.Item>
           </div>

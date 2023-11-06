@@ -1,3 +1,4 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 // type Props = {};
@@ -18,11 +19,11 @@ const Header = () => {
             </div>
             <div
               className="logo"
-              data-mobile-logo="/ImagesCLient/Logo.png"
-              data-sticky-logo="/ImagesCLient/Logo.png"
+              data-mobile-logo="/Images - Copy/Logo.png"
+              data-sticky-logo="/Images - Copy/Logo.png"
             >
               <a href="#hero-1">
-                <img src="/ImagesCLient/Logo.png" alt="header-logo" />
+                <img src="/Images - Copy/Logo.png" alt="header-logo" />
               </a>
             </div>
             <div className="burger-menu">

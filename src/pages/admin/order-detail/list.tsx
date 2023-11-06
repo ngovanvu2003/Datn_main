@@ -14,7 +14,7 @@ import { pusher } from "../../../libs/pusher";
 const AdminListOrderDetail = () => {
   const { confirm } = Modal;
   const { data: orderPosDetailApi, isLoading: isLoadingOrderPosDetail } =
-    useGetOrderDetailsQuery("");
+    useGetOrderDetailsQuery();
   const [orderPosDetailData, setOrderPosDetailData] = useState<any[]>([]);
   const [updateOrderDetail] = useUpdateOrderDetailMutation();
 
@@ -29,18 +29,15 @@ const AdminListOrderDetail = () => {
   const user = JSON.parse(localStorage?.getItem("user") as string);
   const roleId = user?.user?.information?.role_id;
   const branchId = user?.user?.information?.branch_id;
-  console.log(`role-${roleId}-${branchId}`);
-  useEffect(() => {
+  console.log(`role-${roleId}-${branchId}`)
+  useEffect(() => { 
     const channelGetPos = pusher.subscribe("CustomerToPos");
-    channelGetPos.bind(
-      `role-${roleId}-${branchId}`,
-      function (data: { data: any[] }) {
-        data.data.forEach((elementOrValue: any) => {
-          console.log(elementOrValue);
-          setOrderPosDetailData((prevFood) => [...prevFood, elementOrValue]);
-        });
-      }
-    );
+    channelGetPos.bind(`role-${roleId}-${branchId}`, function (data: { data: any[] }) {
+      data.data.forEach((elementOrValue: any) => {
+        console.log(elementOrValue)
+        setOrderPosDetailData((prevFood) => [...prevFood, elementOrValue]);
+      });
+    });
     return () => {
       pusher.unsubscribe("CustomerToPos");
     };

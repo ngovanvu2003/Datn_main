@@ -13,21 +13,22 @@ import {
   Form,
   Input,
   Tag,
-  Skeleton,
+  Spin,
+  Skeleton
 } from "antd";
 import {
   useAddCategoryMutation,
   useDeleteCategoryMutation,
   useGetCategoriesQuery,
   usePaginateTableMutation,
-  useUpdateCategoryMutation,
+  useUpdateCategoryMutation
 } from "../../../api/categories";
 import { ICategory } from "../../../interface/categories";
 import { useForm } from "antd/es/form/Form";
 import moment from "moment";
 
 const AdminCategories = () => {
-  const { data }: any = useGetCategoriesQuery<ICategory[]>();
+  const { data}: any = useGetCategoriesQuery<ICategory[]>();
   const [removeCategory] = useDeleteCategoryMutation();
   const [updataCategoryStatus] = useUpdateCategoryMutation();
   const [isModalVisible, setIsModalVisible] = useState(false);
@@ -45,6 +46,7 @@ const AdminCategories = () => {
   useEffect(() => {
     setIsLoadingData(true);
 
+    
     const loadingTimeout = setTimeout(() => {
       setIsLoadingData(false);
     }, 1000);
@@ -75,7 +77,7 @@ const AdminCategories = () => {
   };
 
   const filteredData = categoriesData?.data
-    .filter((category: any) => {
+    .filter((category: ICategory) => {
       return category.name.toLowerCase().includes(searchKeyword.toLowerCase());
     })
     .map((category: ICategory) => ({
@@ -83,7 +85,7 @@ const AdminCategories = () => {
       ...category,
       created_date: moment(category.created_at).format("DD/MM/YYYY"),
       created_time: moment(category.created_at).format("HH:mm"),
-      updated_at: moment(category.updated_at).format("DD/MM/YYYY HH:mm"),
+      updated_at: moment(category.updated_at).format("DD/MM/YYYY HH:mm")
     }));
 
   const handleStatusChange = (categories: ICategory) => {
@@ -106,7 +108,7 @@ const AdminCategories = () => {
     if (selectedCategory && Array.isArray(categoriesData?.data)) {
       updataCategoryStatus({
         ...selectedCategory,
-        category_status: selectedCategory.category_status === "0" ? "1" : "0",
+        category_status: selectedCategory.category_status === "0" ? "1" : "0"
       })
         .unwrap()
         .then(() => {
@@ -118,7 +120,7 @@ const AdminCategories = () => {
               return {
                 ...category,
                 category_status:
-                  selectedCategory.category_status === "0" ? "1" : "0",
+                  selectedCategory.category_status === "0" ? "1" : "0"
               };
             }
             return category;
@@ -126,7 +128,7 @@ const AdminCategories = () => {
 
           setcategoriesData({
             ...categoriesData,
-            data: updatedData,
+            data: updatedData
           });
 
           setIsModalVisible(false);
@@ -144,16 +146,16 @@ const AdminCategories = () => {
     setIsModalVisible(false);
   };
 
-  const columns: any = [
+  const columns = [
     {
       title: "Tên",
       dataIndex: "name",
-      key: "name",
+      key: "name"
     },
     {
       title: "Ngày tạo",
-      render: (record: any) => <div>{record.created_date}</div>,
-      sorter: (a: any, b: any) => {
+      render: (text: string, record: any) => <div>{record.created_date}</div>,
+      sorter: (a, b) => {
         if (a.created_date && b.created_date) {
           return (
             moment(b.created_date, "DD/MM/YYYY ").unix() -
@@ -163,24 +165,24 @@ const AdminCategories = () => {
           return 0;
         }
       },
-      sortDirections: ["descend", "ascend"],
+      sortDirections: ["descend", "ascend"]
     },
     {
       title: "Giờ tạo",
-      render: (record: any) => <div>{record.created_time}</div>,
+      render: (text: string, record: any) => <div>{record.created_time}</div>
     },
     {
       title: "Trạng thái",
       dataIndex: "category_status",
       filters: [
         { text: "Khả dụng", value: "0" },
-        { text: "Không khả dụng", value: "1" },
+        { text: "Không khả dụng", value: "1" }
       ],
       onFilter: (value: any, record: any) => record.category_status === value,
-      render: (text: any, record: ICategory) => {
+      render: (text, record: ICategory) => {
         const status = text === "0" ? true : false;
         const switchStyle = {
-          backgroundColor: status ? "rgb(252, 106, 87)" : "gray",
+          backgroundColor: status ? "rgb(252, 106, 87)" : "gray"
         };
 
         return (
@@ -201,7 +203,7 @@ const AdminCategories = () => {
             />
           </div>
         );
-      },
+      }
     },
 
     {
@@ -224,13 +226,13 @@ const AdminCategories = () => {
                 .then(() => {
                   message.success({
                     type: "success",
-                    content: "Xóa sản phẩm thành công",
+                    content: "Xóa sản phẩm thành công"
                   });
                 });
             }}
             okText="Có"
             okButtonProps={{
-              style: { backgroundColor: "orange", color: "white" },
+              style: { backgroundColor: "orange", color: "white" }
             }}
             cancelText="Không"
             overlayStyle={{ width: "250px" }}
@@ -243,8 +245,8 @@ const AdminCategories = () => {
             </button>
           </Popconfirm>
         </div>
-      ),
-    },
+      )
+    }
   ];
 
   return (
@@ -287,12 +289,12 @@ const AdminCategories = () => {
                               rules={[
                                 {
                                   required: true,
-                                  message: "Vui lòng nhập tên danh mục!",
+                                  message: "Vui lòng nhập tên danh mục!"
                                 },
                                 {
                                   min: 3,
-                                  message: "Tên danh mục ít nhất 3 ký tự",
-                                },
+                                  message: "Tên danh mục ít nhất 3 ký tự"
+                                }
                               ]}
                             >
                               <div>
@@ -304,6 +306,7 @@ const AdminCategories = () => {
                                 />
                               </div>
                             </Form.Item>
+                    
                           </div>
                           <div className="">
                             <Form.Item wrapperCol={{ offset: 19, span: 3 }}>
@@ -364,7 +367,7 @@ const AdminCategories = () => {
             <div className="py-4">
               <div className="table-responsive datatable-custom">
                 <div className="table table-borderless table-thead-bordered table-nowrap table-align-middle card-table">
-                  {isLoadingData ? (
+                {isLoadingData ? ( 
                     <Skeleton active />
                   ) : (
                     <Table
@@ -373,6 +376,7 @@ const AdminCategories = () => {
                       pagination={false}
                     />
                   )}
+                  
                 </div>
                 {/*Paginate */}
                 <div className="table-responsive mt-4 px-3">
@@ -439,8 +443,8 @@ const AdminCategories = () => {
             <span style={{ fontSize: "18px" }}>Cảnh báo</span>
           </div>
         }
-        okText="Xác nhận"
-        okType="danger"
+        okText= "Xác nhận"
+        okType= "danger"
         visible={isModalVisible}
         onOk={handleConfirmStatusChange}
         onCancel={handleCancelStatusChange}

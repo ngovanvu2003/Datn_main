@@ -17,7 +17,7 @@ const orderDetailApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getOrderDetailsOption: builder.query<{ meta: any; data: any }, any>({
+    getOrderDetailsOption: builder.query<{ meta: any; data: any }, string>({
       query: (string) => `order-detail/list${string}`,
       providesTags: ["OrderDetail"],
     }),
@@ -51,11 +51,11 @@ const orderDetailApi = createApi({
       }),
       invalidatesTags: ["OrderDetail"],
     }),
-    getOrderDetails: builder.query<{ meta: any; data: any }, any>({
+    getOrderDetails: builder.query<{ meta: any; data: any }, number>({
       query: () => `order-detail/list`,
       providesTags: ["OrderDetail"],
     }),
-    getOrderDetailsHistrory: builder.query<{ meta: any; data: any }, any>({
+    getOrderDetailsHistrory: builder.query<{ meta: any; data: any }, number>({
       query: (perpage) => `order-detail/list?perpage=${perpage | 200}`,
       providesTags: ["OrderDetail"],
     }),
@@ -68,7 +68,7 @@ export const {
   useGetOrderDetailByIdQuery,
   useAddOrderDetailMutation,
   useUpdateOrderDetailMutation,
-  useGetOrderDetailsHistroryQuery,
+  useGetOrderDetailsHistroryQuery
 } = orderDetailApi;
 export const orderDetailReducer = orderDetailApi.reducer;
 export default orderDetailApi;

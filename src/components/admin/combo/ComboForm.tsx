@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
 import { Loader2 } from "lucide-react";
@@ -7,7 +7,7 @@ import { Loader2 } from "lucide-react";
 import { useGetCategoriesQuery } from "../../../api/categories";
 import { useAddComboMutation } from "../../../api/combo";
 const ComboForm = () => {
-  const { data: categories } = useGetCategoriesQuery<any>();
+  const { data: categories } = useGetCategoriesQuery();
   console.log(categories);
 
   const [AddCombo, { isLoading: isLoadingCombo }] = useAddComboMutation();

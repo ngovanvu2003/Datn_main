@@ -30,7 +30,7 @@ const MenuOrder = () => {
           className="flex justify-center space-x-1 font-normal py-3 rounded-md bg-white text-sm lg:text-base"
           style={{
             color: "rgb(204, 103, 11)",
-            backgroundImage: "url('/ImagesCLient/paper_bg.png')",
+            backgroundImage: "url('/Images - Copy/paper_bg.png')",
           }}
         >
           <li

@@ -1,10 +1,9 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { AiOutlineDoubleRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import {
   useGetMenusQuery,
   useGetMenusRightQuery,
-  useUpdateMenuMutation,
+  useUpdateMenuMutation
 } from "../../../api/kitchen";
 import { IKitchen } from "../../../interface/kitchen";
 import moment from "moment";
@@ -44,8 +43,8 @@ const AdminKitchen = () => {
     axios
       .get(`${path}`, {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       })
       .then((response) => {
         setMenusDataOption(response.data);
@@ -61,8 +60,8 @@ const AdminKitchen = () => {
     axios
       .get(`${path}`, {
         headers: {
-          Authorization: `Bearer ${access_token}`,
-        },
+          Authorization: `Bearer ${access_token}`
+        }
       })
       .then((response) => {
         setMenusRightDataOption(response.data);
@@ -94,8 +93,8 @@ const AdminKitchen = () => {
   const roleId = parsedUser.user ? parsedUser.user.information.role_id : "";
   const branchId = parsedUser.user ? parsedUser.user.information.branch_id : "";
   const access_token = parsedUser.user ? parsedUser.user.access_token : "";
-  console.log("roleId", roleId, "branchId", branchId);
-
+  console.log("roleId",roleId ,"branchId",branchId);
+   
   useEffect(() => {
     const channelGetKitchen = pusher.subscribe("ToAll");
     channelGetKitchen.bind(
@@ -103,7 +102,7 @@ const AdminKitchen = () => {
       function (data: { data: any[] }) {
         data.data.forEach((elementOrValue: any) => {
           console.log(elementOrValue);
-
+          
           setOrderGetKitchen((prevFood) => [elementOrValue, ...prevFood]);
         });
       }
@@ -138,7 +137,7 @@ const AdminKitchen = () => {
       await updateMenu({
         ...menu,
         orderableId: menu.id,
-        orderable_status: 2,
+        orderable_status: 2
       });
       message.success("Chuyển trạng thái thành công");
 
@@ -192,7 +191,7 @@ const AdminKitchen = () => {
                 to={{}}
                 className="underline underline-offset-8 text-orange-500 "
               >
-                Danh sách các món ăn
+              Danh sách các món ăn
               </Link>
             </div>
           </div>
@@ -315,7 +314,7 @@ const AdminKitchen = () => {
                 </div>
                 <div className="space-x-2 py-2">
                   <button className="border-2  border-green-300 bg-green-400 rounded-full px-4 py-2 text-white ">
-                    <FaCheck />
+                  <FaCheck/>
                   </button>
                 </div>
               </div>

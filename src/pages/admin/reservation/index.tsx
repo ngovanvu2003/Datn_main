@@ -131,9 +131,10 @@ const Index = () => {
                           value: "-1",
                         },
                       ]}
-                      onFilter={(value: any, record: IReservation) =>
-                        record.reservation_status === value
-                      }
+                      onFilter={(
+                        value: string | number | boolean,
+                        record: IReservation
+                      ) => record.reservation_status === value}
                       render={(text: string) => {
                         const status = (text: string) => {
                           console.log(text);

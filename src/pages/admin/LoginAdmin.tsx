@@ -112,7 +112,7 @@ const LoginAdmin = () => {
       <div className="auth-wrapper">
         <div className="auth-wrapper-left">
           <div className="auth-left-cont">
-            <img width="310" src="/ImagesCLient/Logo.png" alt="Logo" />
+            <img width="310" src="/Images - Copy/Logo.png" alt="Logo" />
             <h2 className="title">
               <span className="d-block text-capitalize"> </span>{" "}
               <strong className="text--039D55 c1 text-capitalize">

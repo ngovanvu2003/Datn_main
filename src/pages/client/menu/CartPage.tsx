@@ -524,7 +524,7 @@ const CartPage = () => {
             >
               <img
                 style={{ margin: "0 48%" }}
-                src="/ImagesCLient\checked.png"
+                src="..\public\Images - Copy\checked.png"
                 alt=""
               />
               Yêu cầu gọi món đang chờ xác nhận

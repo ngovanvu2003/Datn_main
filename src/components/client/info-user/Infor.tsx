@@ -1,3 +1,4 @@
+import React from "react";
 import SectionInfo from "./SectionInfo";
 
 const Infor = () => {
@@ -20,6 +21,7 @@ const Infor = () => {
 
                   <div className="col-lg-6">
                     <input
+                     
                       type="text"
                       name="date"
                       className="form-control name"

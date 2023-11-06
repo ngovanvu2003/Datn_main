@@ -5,7 +5,7 @@ import {
   useDeleteProductMutation,
   useGetProductsQuery,
   usePaginateTableMutation,
-  useUpdateProductMutation,
+  useUpdateProductMutation
 } from "../../../api/product";
 import { IProduct } from "../../../interface/product";
 import {
@@ -23,7 +23,7 @@ import {
   Tag,
 } from "antd";
 import { useGetCategoriesQuery } from "../../../api/categories";
-// import { ICategory } from "../../../interface/categories";
+import { ICategory } from "../../../interface/categories";
 import { FilterOutlined } from "@ant-design/icons";
 import { ExclamationCircleFilled } from "@ant-design/icons";
 import moment from "moment";
@@ -33,17 +33,17 @@ const AdminProducts = () => {
   const [removeProduct] = useDeleteProductMutation();
   const [updateProductStatus] = useUpdateProductMutation();
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [categories, setCategories] = useState<any>({});
-  const getCategory = useGetCategoriesQuery<any>();
+  const [categories, setCategories] = useState<ICategory>({});
+  const getCategory = useGetCategoriesQuery();
   const [loading, setLoading] = useState(false);
   const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
   const [searchKeyword, setSearchKeyword] = useState("");
-  // const [loadingData, setLoadingData] = useState(true);
+  const [loadingData, setLoadingData] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [minPrice, setMinPrice] = useState<any>(null);
   const [maxPrice, setMaxPrice] = useState<any>(null);
   const [isFilterModalVisible, setIsFilterModalVisible] = useState(false);
-  const [productsData, setProductsData] = useState<any>(data);
+  const [productsData, setProductsData] = useState(data);
   const [paginateTable] = usePaginateTableMutation();
   useEffect(() => {
     setProductsData(data);
@@ -71,7 +71,7 @@ const AdminProducts = () => {
   };
   useEffect(() => {
     if (getCategory.data?.data) {
-      const categoryMapping: any = {};
+      const categoryMapping = {};
       getCategory.data.data.forEach(
         (category: { id: string | number; name: any }) => {
           categoryMapping[category.id] = category.name;
@@ -82,13 +82,13 @@ const AdminProducts = () => {
   }, [getCategory.data]);
 
   useEffect(() => {
-    // setLoadingData(true);
+    setLoadingData(true);
     setIsLoading(true);
 
     setTimeout(() => {
       setIsLoading(false);
 
-      // setLoadingData(false);
+      setLoadingData(false);
     }, 500);
   }, []);
 
@@ -100,14 +100,14 @@ const AdminProducts = () => {
     return price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
   const filteredData = productsData?.data.data
-    .filter((product: any) => {
+    .filter((product: IProduct) => {
       return (
         product.name.toLowerCase().includes(searchKeyword.toLowerCase()) &&
         (minPrice === null || product.price >= minPrice) &&
         (maxPrice === null || product.price <= maxPrice)
       );
     })
-    .map((product: any) => ({
+    .map((product: IProduct) => ({
       key: product.id,
       ...product,
       created_at: moment(product.created_at).format("DD/MM/YYYY "),
@@ -141,7 +141,7 @@ const AdminProducts = () => {
                 return {
                   ...product,
                   product_status:
-                    selectedProduct.product_status === "0" ? "1" : "0",
+                    selectedProduct.product_status === "0" ? "1" : "0"
                 };
               }
               return product;
@@ -153,8 +153,8 @@ const AdminProducts = () => {
             ...productsData,
             data: {
               ...productsData?.data,
-              data: updatedData,
-            },
+              data: updatedData
+            }
           });
 
           setIsModalVisible(false);
@@ -179,11 +179,11 @@ const AdminProducts = () => {
     setMinPrice(null);
     setMaxPrice(null);
   };
-  const columns: any = [
+  const columns = [
     {
       title: "Tên",
       dataIndex: "name",
-      key: "name",
+      key: "name"
     },
     {
       title: (
@@ -211,7 +211,9 @@ const AdminProducts = () => {
 
       dataIndex: "price",
       key: "price",
-      render: (price: number) => <span>{`${price.toLocaleString()}`}</span>,
+      render: (price: number) => (
+        <span>{`${price.toLocaleString()}`}</span>
+      ),
     },
     {
       title: "Đơn vị",
@@ -229,7 +231,7 @@ const AdminProducts = () => {
           height={50}
           style={{ objectFit: "cover" }}
         />
-      ),
+      )
     },
     {
       title: "Mô tả",
@@ -240,8 +242,9 @@ const AdminProducts = () => {
       title: "Ngày tạo",
       dataIndex: "created_at",
       key: "created_at",
-      sorter: (a: any, b: any) => {
+      sorter: (a:any, b:any) => {
         if (a.created_at && b.created_at) {
+          
           return (
             moment(b.created_at, "DD/MM/YYYY HH:mm").unix() -
             moment(a.created_at, "DD/MM/YYYY HH:mm").unix()
@@ -251,8 +254,9 @@ const AdminProducts = () => {
         }
       },
       sortDirections: ["descend", "ascend"],
+ 
     },
-
+   
     {
       title: "Trạng thái",
       dataIndex: "product_status",
@@ -548,13 +552,14 @@ const AdminProducts = () => {
             <span style={{ fontSize: "18px" }}>Cảnh báo</span>
           </div>
         }
-        okText="Xác nhận"
-        okType="danger"
+        okText= "Xác nhận"
+        okType= "danger"
         visible={isModalVisible}
         onOk={handleConfirmStatusChange}
         onCancel={handleCancelStatusChange}
         confirmLoading={loading}
         width={400}
+       
       >
         <span>
           Bạn có chắc muốn thay đổi trạng thái sản phẩm{" "}

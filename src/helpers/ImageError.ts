@@ -1,3 +1,3 @@
 export const onHandleImageError = (e: any) => {
-  e.target.src = "/ImagesCLient/Logo.png";
+  e.target.src = "/Images - Copy/Logo.png";
 };

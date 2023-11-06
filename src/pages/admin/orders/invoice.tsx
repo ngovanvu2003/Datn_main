@@ -1,14 +1,14 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useParams } from "react-router-dom";
 import { useGetOrderByIdQuery } from "../../../api/order";
 import { useEffect } from "react";
 import { CurrencyFormat } from "../../../components/CurrencyFormat";
+type Props = {};
 
-const AdminOrderInvoice = () => {
+const AdminOrderInvoice = (props: Props) => {
   const { id } = useParams<{ id: string }>();
-  const { data: orderData }: any = useGetOrderByIdQuery(id || "");
+  const { data: orderData } = useGetOrderByIdQuery(id || "");
   const data = orderData?.data?.order;
-  // const combo: any = orderData?.data?.combo;
+  const combo = orderData?.data?.combo;
   const product = orderData?.data?.product;
   useEffect(() => {}, [orderData]);
   console.log(orderData);
@@ -124,7 +124,7 @@ const AdminOrderInvoice = () => {
                           textAlign: "right",
                         }}
                       >
-                        {item?.total_price}
+                         {item?.total_price}
                       </td>
                     </tr>
                   );
@@ -141,13 +141,13 @@ const AdminOrderInvoice = () => {
                     Tiền hàng:
                   </dt>
                   <dd className="col-6" style={{ color: "gray" }}>
-                    <CurrencyFormat value={data?.order_amount_discount} />
+                  <CurrencyFormat value={data?.order_amount_discount} />
                   </dd>
                   <dt className="col-6" style={{ color: "gray" }}>
                     VAT:
                   </dt>
                   <dd className="col-6" style={{ color: "gray" }}>
-                    <CurrencyFormat value={data?.vat} />
+                  <CurrencyFormat value={data?.vat} />
                   </dd>
                   <dt
                     className="col-6"

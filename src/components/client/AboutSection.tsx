@@ -1,3 +1,5 @@
+import React from "react";
+
 // type Props = {}
 
 const AboutSection = () => {
@@ -11,7 +13,7 @@ const AboutSection = () => {
                 <div className="abox-4 text-center mb-20 coffee-color">
                   <div className="abox-4-ico">
                     <img
-                      src="/ImagesCLient/meat.png"
+                      src="/Images - Copy/meat.png"
                       alt=""
                       style={{ width: "80px", display: "inline-block" }}
                     />
@@ -27,7 +29,7 @@ const AboutSection = () => {
                 <div className="abox-4 text-center mb-20 coffee-color">
                   <div className="abox-4-ico">
                     <img
-                      src="/ImagesCLient/cabbage.png"
+                      src="/Images - Copy/cabbage.png"
                       alt=""
                       style={{ width: "80px", display: "inline-block" }}
                     />
@@ -44,7 +46,7 @@ const AboutSection = () => {
                 <div className="abox-4 text-center mb-20 coffee-color">
                   <div className="abox-4-ico">
                     <img
-                      src="/ImagesCLient/touch.png"
+                      src="/Images - Copy/touch.png"
                       alt=""
                       style={{ width: "80px", display: "inline-block" }}
                     />

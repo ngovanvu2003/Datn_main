@@ -1,12 +1,11 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input, message, Select } from "antd";
 import { useForm } from "antd/es/form/Form";
 import { useNavigate } from "react-router-dom";
 import { useAddProductMutation } from "../../../api/product";
 import { Progress } from "antd";
 import { useState } from "react";
-// import { useGetCategoriesQuery } from "../../../api/categories";
+import { useGetCategoriesQuery } from "../../../api/categories";
 
 type FieldType = {
   name?: string;
@@ -27,18 +26,18 @@ const AdminProductsAdd = () => {
   const [addProduct] = useAddProductMutation();
   const navigate = useNavigate();
   const [form] = useForm();
-
-  // const [selectedFile, setSelectedFile] = useState(null);
+  const dataCate = useGetCategoriesQuery();
+  const [selectedFile, setSelectedFile] = useState(null);
   const user = localStorage.getItem("user");
   const parsedUser = user ? JSON.parse(user) : {};
   const access_token = parsedUser.user ? parsedUser.user.access_token : "";
   const token = `Bearer ${access_token}`;
-  const [cdnImage, setCdnImage] = useState<any>(null);
+  const [cdnImage, setCdnImage] = useState(null);
   const [uploading, setUploading] = useState(false);
   const [uploadProgress, setUploadProgress] = useState(0);
   const handleFileChange = (e: any) => {
     const file = e.target.files[0];
-    // setSelectedFile(file);
+    setSelectedFile(file);
     if (file) {
       const formData = new FormData();
       formData.append("image_upload", file);
@@ -46,11 +45,11 @@ const AdminProductsAdd = () => {
       const requestOptions = {
         method: "POST",
         headers: {
-          Authorization: token,
+          Authorization: token
         },
-        body: formData,
+        body: formData
       };
-
+   
       setUploading(true); // Bắt đầu upload
       setUploadProgress(0);
       // Đặt phần trăm về 0
@@ -126,7 +125,7 @@ const AdminProductsAdd = () => {
     }
     return Promise.resolve();
   };
-
+  
   const validateUnitWareHouse = (_: any, value: string) => {
     if (!value) {
       return Promise.reject("Vui lòng nhập số lượng");
@@ -140,7 +139,7 @@ const AdminProductsAdd = () => {
     }
     return Promise.resolve();
   };
-
+  
   return (
     <>
       <div className="d-flex flex-wrap gap-2 align-items-center mb-4">
@@ -180,8 +179,8 @@ const AdminProductsAdd = () => {
                         { required: true, message: "Please input your name!" },
                         {
                           min: 3,
-                          message: "Name must be more than 3 characters",
-                        },
+                          message: "Name must be more than 3 characters"
+                        }
                       ]}
                     >
                       <Input
@@ -199,7 +198,7 @@ const AdminProductsAdd = () => {
                       className="py-2"
                       rules={[
                         { required: true, message: "Please input your price!" },
-                        { validator: validatePrice },
+                        { validator: validatePrice }
                       ]}
                     >
                       <Input className=" w-[200px]" placeholder="Nhập giá" />
@@ -210,18 +209,16 @@ const AdminProductsAdd = () => {
                       <span>Số lượng vào kho </span>{" "}
                       <span className="text-danger"> *</span>
                     </div>
-                    <Form.Item<FieldType>
-                      name="add_to_stock"
-                      className="py-2"
-                      rules={[
-                        { required: true, message: "Please input your price!" },
-                        { validator: validateUnitWareHouse },
-                      ]}
+                    <Form.Item<FieldType> 
+                    name="add_to_stock" 
+                    className="py-2"
+                    rules={[
+                      { required: true, message: "Please input your price!" },
+                      { validator: validateUnitWareHouse }
+                      
+                    ]}
                     >
-                      <Input
-                        className=" w-[200px]"
-                        placeholder="Nhập số lượng vào kho"
-                      />
+                      <Input className=" w-[200px]" placeholder="Nhập số lượng vào kho" />
                     </Form.Item>
                   </div>
                   <div>
@@ -233,13 +230,10 @@ const AdminProductsAdd = () => {
                       name="stock_unit"
                       className="py-2 w-[200px]"
                       rules={[
-                        {
-                          required: true,
-                          message: "Bạn chưa nhập đơn vị vào kho !",
-                        },
+                        { required: true, message: "Bạn chưa nhập đơn vị vào kho !" }
                       ]}
                     >
-                      <Input className=" w-full" placeholder="Vd: Kg" />
+                     <Input className=" w-full" placeholder="Vd: Kg" />
                     </Form.Item>
                   </div>
                   <div>
@@ -251,17 +245,19 @@ const AdminProductsAdd = () => {
                       name="unit"
                       className="py-2 w-[200px]"
                       rules={[
-                        { required: true, message: "Please select the unit!" },
+                        { required: true, message: "Please select the unit!" }
                       ]}
                     >
-                      <Input className=" w-full" placeholder="Vd: Kg" />
+                     <Input className=" w-full" placeholder="Vd: Kg" />
                     </Form.Item>
                   </div>
+
                 </div>
               </div>
               <div className=" rounded-lg px-4 pt-4">
                 <span className="pb-2">
-                  Thêm ảnh <span className="text-[#ED4C78]">( Ratio 1:1 )</span>{" "}
+                  Thêm ảnh{" "}
+                  <span className="text-[#ED4C78]">( Ratio 1:1 )</span>{" "}
                 </span>
                 <div className="py-4 bg-[#fff] text-center border rounded-md my-2">
                   {uploading ? (
@@ -300,7 +296,10 @@ const AdminProductsAdd = () => {
             <div className="  rounded-lg px-4 pb-4">
               <span>Mô tả</span>
               <span className="text-danger"> *</span>
-              <Form.Item<FieldType> name="description">
+              <Form.Item<FieldType>
+                name="description"
+              
+              >
                 <Input.TextArea
                   showCount
                   className="h-[250px] my-2"

@@ -8,17 +8,17 @@ const categoryApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_BASE_URL_API,
     prepareHeaders: (headers) => {
-      const user = localStorage.getItem("user");
-      const parsedUser = user ? JSON.parse(user) : {};
-      const access_token = parsedUser.user ? parsedUser.user.access_token : "";
-      if (access_token) {
-        headers.set("Authorization", `Bearer ${access_token}`);
-      }
-      return headers;
-    },
+        const user = localStorage.getItem("user");
+        const parsedUser = user ? JSON.parse(user) : {};
+        const access_token = parsedUser.user ? parsedUser.user.access_token : "";
+        if (access_token) {
+          headers.set("Authorization", `Bearer ${access_token}`);
+        }
+        return headers;
+      },
   }),
   endpoints: (builder) => ({
-    getCategories: builder.query<any[], void>({
+    getCategories: builder.query<ICategory[], void>({
       query: () => "category/list-category",
       providesTags: ["Category"],
     }),
@@ -52,7 +52,7 @@ const categoryApi = createApi({
     paginateTable: builder.mutation<any, string>({
       query: (page) => ({
         url: `/category/list-category?page=${page}`,
-        method: "GET",
+        method: "GET"
       }),
       invalidatesTags: ["Category"],
     }),
@@ -65,7 +65,7 @@ export const {
   useAddCategoryMutation,
   useDeleteCategoryMutation,
   useUpdateCategoryMutation,
-  usePaginateTableMutation,
+  usePaginateTableMutation
 } = categoryApi;
 export const categoryReducer = categoryApi.reducer;
 export default categoryApi;

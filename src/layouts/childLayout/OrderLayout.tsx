@@ -1,10 +1,11 @@
+import React from "react";
 import { Outlet } from "react-router-dom";
 
 // type Props = {};
 
 const OrderLayout = () => {
   return (
-    <div>
+    <div> 
       <div className="datban">
         <div id="booking-2" className="wide-70 booking-section division">
           <div className="max-w-6xl m-auto">

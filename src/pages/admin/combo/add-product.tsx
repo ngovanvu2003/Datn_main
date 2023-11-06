@@ -88,7 +88,7 @@ const AdminAddComboProduct = () => {
   };
 
   const onHandleImageError = (e: any) => {
-    e.target.src = "/ImagesCLient/Logo.png";
+    e.target.src = "/Images - Copy/Logo.png";
   };
 
   const onHandleDeleteProduct = (value: any) => {
@@ -183,6 +183,7 @@ const AdminAddComboProduct = () => {
             <div className="card">
               <div className="card-body">
                 <div className="row">
+
                   {/* combo list */}
                   <div className="col-lg-12">
                     <div className="form-group">

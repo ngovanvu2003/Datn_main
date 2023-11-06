@@ -1,4 +1,6 @@
 import { useEffect, useState } from "react";
+// import { useGetTablesQuery } from "../../../api/tables";
+// import { useGetBranchesQuery } from "../../../api/branches";
 import {
   useGetReservationsOptionQuery,
   usePaginateIfReservationMutation,
@@ -21,7 +23,7 @@ const AddIfAny = (props: any) => {
     setReservation(reservation);
   }, [reservation]);
   const [presently, setHidden] = useState(false);
-
+ 
   const handlePageChange = (path: string) => {
     setLoadingPageChange(true);
     const page = path.slice(-1);
@@ -51,17 +53,19 @@ const AddIfAny = (props: any) => {
       key: item.id,
       ...item,
     }));
-  const addDataForm = (record: any) => {
-    try {
-      setIsLoadingAddReservation(true);
-      props.onChildButtonClick(record);
-      setIsLoadingAddReservation(false);
-      toast.success("Thêm vào form thành công");
-    } catch (error: any) {
-      toast.error(error.message);
-    }
-    setHidden(false);
-  };
+    const addDataForm = (record: any) => {
+ 
+      try {
+        setIsLoadingAddReservation(true);
+        props.onChildButtonClick(record);
+        setIsLoadingAddReservation(false);
+        toast.success("Thêm vào form thành công");
+        
+      } catch (error: any) {
+        toast.error(error.message);
+      }
+      setHidden(false);
+    };
 
   return (
     <>
@@ -147,97 +151,97 @@ const AddIfAny = (props: any) => {
                                   </div>
                                 </div>
                                 <div className="py-4">
-                                  {isLoadingAddReservation ? (
+                                {isLoadingAddReservation ? (
                                     <div>Loading...</div>
                                   ) : (
-                                    <div className="table-responsive">
-                                      {isLoadingReservation ||
-                                      isLoadingReservation ||
-                                      loadingPageChange ? (
-                                        <Skeleton />
-                                      ) : (
-                                        <Table
-                                          dataSource={data}
-                                          pagination={false}
-                                        >
-                                          <Column
-                                            title="Tên Khách Hàng"
-                                            dataIndex="username"
-                                          />
-                                          <Column
-                                            title="Số điện thoại"
-                                            dataIndex="phone"
-                                          />
-                                          <Column
-                                            title="Số người đi"
-                                            dataIndex="quantity_person"
-                                          />
-                                          <Column
-                                            title="Chi nhánh"
-                                            dataIndex="branch_name"
-                                          />
-                                          <Column
-                                            title="Đặt bàn lúc"
-                                            dataIndex="created_at"
-                                            sorter={(a: any, b: any) =>
-                                              new Date(a.created_at).getTime() -
-                                              new Date(b.created_at).getTime()
-                                            }
-                                            render={(record) => (
-                                              <DateTimeFormat value={record} />
-                                            )}
-                                          />
-                                          <Column
-                                            title="Trạng thái"
-                                            dataIndex="reservation_status"
-                                            render={(text: string) => {
-                                              const status = (text: string) => {
-                                                if (text === "0") {
-                                                  return (
-                                                    <Tag color="blue">
-                                                      Khách chưa tới
-                                                    </Tag>
-                                                  );
-                                                } else if (text === "1") {
-                                                  return (
-                                                    <Tag color="green">
-                                                      Khách đã đến
-                                                    </Tag>
-                                                  );
-                                                } else if (text === "-1") {
-                                                  return (
-                                                    <Tag color="red">
-                                                      Khách đã hủy
-                                                    </Tag>
-                                                  );
+                                  <div className="table-responsive">
+                                    {isLoadingReservation ||
+                                    isLoadingReservation ||
+                                    loadingPageChange ? (
+                                      <Skeleton />
+                                    ) : (
+                                      <Table
+                                        dataSource={data}
+                                        pagination={false}
+                                      >
+                                        <Column
+                                          title="Tên Khách Hàng"
+                                          dataIndex="username"
+                                        />
+                                        <Column
+                                          title="Số điện thoại"
+                                          dataIndex="phone"
+                                        />
+                                        <Column
+                                          title="Số người đi"
+                                          dataIndex="quantity_person"
+                                        />
+                                        <Column
+                                          title="Chi nhánh"
+                                          dataIndex="branch_name"
+                                        />
+                                        <Column
+                                          title="Đặt bàn lúc"
+                                          dataIndex="created_at"
+                                          sorter={(a: any, b: any) =>
+                                            new Date(a.created_at).getTime() -
+                                            new Date(b.created_at).getTime()
+                                          }
+                                          render={(record) => (
+                                            <DateTimeFormat value={record} />
+                                          )}
+                                        />
+                                        <Column
+                                          title="Trạng thái"
+                                          dataIndex="reservation_status"
+                                          render={(text: string) => {
+                                            const status = (text: string) => {
+                                              if (text === "0") {
+                                                return (
+                                                  <Tag color="blue">
+                                                    Khách chưa tới
+                                                  </Tag>
+                                                );
+                                              } else if (text === "1") {
+                                                return (
+                                                  <Tag color="green">
+                                                    Khách đã đến
+                                                  </Tag>
+                                                );
+                                              } else if (text === "-1") {
+                                                return (
+                                                  <Tag color="red">
+                                                    Khách đã hủy
+                                                  </Tag>
+                                                );
+                                              }
+                                            };
+                                            return (
+                                              <div className="">
+                                                {status(text)}
+                                              </div>
+                                            );
+                                          }}
+                                        />
+                                        <Column
+                                          title="Hành động"
+                                          key="action"
+                                          render={(record: IReservation) => (
+                                            <Space size="middle">
+                                              <a
+                                                className=" d-flex justify-content-lg-end btn btn-outline-info btn-sm edit square-btn flex items-center"
+                                                onClick={() =>
+                                                  addDataForm(record)
                                                 }
-                                              };
-                                              return (
-                                                <div className="">
-                                                  {status(text)}
-                                                </div>
-                                              );
-                                            }}
-                                          />
-                                          <Column
-                                            title="Hành động"
-                                            key="action"
-                                            render={(record: IReservation) => (
-                                              <Space size="middle">
-                                                <a
-                                                  className=" d-flex justify-content-lg-end btn btn-outline-info btn-sm edit square-btn flex items-center"
-                                                  onClick={() =>
-                                                    addDataForm(record)
-                                                  }
-                                                >
-                                                  <i className="tio-edit"></i>
-                                                </a>
-                                              </Space>
-                                            )}
-                                          />
-                                        </Table>
-                                      )}
-                                    </div>
+                                              >
+                                                <i className="tio-edit"></i>
+                                              </a>
+                                            </Space>
+                                          )}
+                                        />
+                                      </Table>
+                                    )}
+                                  </div>
                                   )}
                                   <div className="table-responsive mt-4 px-3">
                                     <div className="d-flex justify-content-lg-end">

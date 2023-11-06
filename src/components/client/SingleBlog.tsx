@@ -1,3 +1,5 @@
+import React from "react";
+
 // type Props = {};
 
 const SingleBlog = () => {
@@ -31,7 +33,7 @@ const SingleBlog = () => {
                 <div className="post-inner-img">
                   <img
                     className="img-fluid"
-                    src="/ImagesCLient\sumo-homepage-5.png"
+                    src="/public\Images - Copy\sumo-homepage-5.png"
                     alt="blog-post-image"
                   />
                 </div>
@@ -109,7 +111,7 @@ const SingleBlog = () => {
                       <div className="col-md-6 top-img blog-post-img">
                         <img
                           className="img-fluid"
-                          src="/ImagesCLient\sumo-yakiniku-homepage-3.png"
+                          src="/public\Images - Copy\sumo-yakiniku-homepage-3.png"
                           alt="blog-post-image"
                         />
                         <p className="p-sm grey-color">
@@ -119,7 +121,7 @@ const SingleBlog = () => {
                       <div className="col-md-6 blog-post-img">
                         <img
                           className="img-fluid"
-                          src="/ImagesCLient\sample-2-scaled.jpg"
+                          src="/public\Images - Copy\sample-2-scaled.jpg"
                           alt="blog-post-image"
                         />
                         <p className="p-sm grey-color">
